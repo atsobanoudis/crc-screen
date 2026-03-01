@@ -5,6 +5,17 @@ import { content, Language, Page } from './data/content';
 import { DoctorIcon, TestTubeIcon, MailboxDnaIcon, ColonIcon } from './components/Icons';
 import { PATIENT_PHONE, PATIENT_PHONE_URI } from './config';
 
+const resolveAsset = (path: string) => {
+  const base = import.meta.env.BASE_URL;
+  // If base is './' or '/', we don't need to do much
+  // but if it's '/crc-screen/', we need to handle it.
+  if (base === './') return path.startsWith('/') ? path.slice(1) : path;
+  if (base.endsWith('/') && path.startsWith('/')) {
+    return base + path.slice(1);
+  }
+  return base + path;
+};
+
 export default function App() {
   const [language, setLanguage] = useState<Language | null>(null);
   const [page, setPage] = useState<Page>('language');
@@ -138,14 +149,14 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
           <div className="mb-8">
             <div className="rounded-[2rem] overflow-hidden shadow-md border border-black/5 bg-white p-4">
               <a 
-                href={t.brochurePath} 
+                href={resolveAsset(t.brochurePath)} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block cursor-zoom-in"
                 title={t.tapToEnlarge}
               >
                 <img 
-                  src={t.brochurePath} 
+                  src={resolveAsset(t.brochurePath)} 
                   alt={t.downloadBrochure}
                   className="w-full h-auto rounded-2xl hover:opacity-95 transition-opacity"
                 />
@@ -161,7 +172,7 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
               </p>
 
               <a 
-                href={t.brochurePath}
+                href={resolveAsset(t.brochurePath)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-4 px-6 bg-brand/10 text-brand rounded-full text-xl font-bold hover:bg-brand/20 transition-colors flex items-center justify-center gap-3"
@@ -315,7 +326,7 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
           </div>
 
           <a 
-            href={m.downloadPath}
+            href={resolveAsset(m.downloadPath)}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-6 px-8 bg-brand text-white rounded-full text-2xl font-bold shadow-lg hover:bg-brand-light active:bg-brand-dark transition-colors flex items-center justify-center gap-4"

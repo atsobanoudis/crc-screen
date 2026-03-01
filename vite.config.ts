@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 export default defineConfig(({mode}) => {
   return {
     plugins: [react(), tailwindcss()],
-    base: '/crc-screen/',
+    base: './',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
