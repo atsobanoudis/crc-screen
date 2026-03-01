@@ -18,6 +18,8 @@ export const content = {
     back: "Back",
     home: "Start Over",
     downloadBrochure: "Download Brochure",
+    brochurePath: "/brochure-en.jpg",
+    brochureFilename: "CRC-Screening-Brochure-EN.jpg",
     methods: {
       fit: {
         title: "FIT (Fecal Immunochemical Test)",
@@ -73,6 +75,8 @@ export const content = {
     back: "Atrás",
     home: "Volver al inicio",
     downloadBrochure: "Descargar Folleto",
+    brochurePath: "/brochure-es.jpg",
+    brochureFilename: "Folleto-Deteccion-CRC-ES.jpg",
     methods: {
       fit: {
         title: "Prueba FIT",

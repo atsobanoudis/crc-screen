@@ -128,6 +128,24 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
       </header>
 
       <div className="flex-1 p-6 space-y-5 overflow-y-auto pb-12 pt-8">
+        <div className="mb-8">
+          <div className="rounded-[2rem] overflow-hidden shadow-md border border-black/5 bg-white p-4">
+            <img 
+              src={t.brochurePath} 
+              alt={t.downloadBrochure}
+              className="w-full h-auto rounded-2xl mb-4"
+            />
+            <a 
+              href={t.brochurePath}
+              download={t.brochureFilename}
+              className="w-full py-4 px-6 bg-brand/10 text-brand rounded-full text-xl font-bold hover:bg-brand/20 transition-colors flex items-center justify-center gap-3"
+            >
+              <Download className="w-6 h-6" />
+              <span>{t.downloadBrochure}</span>
+            </a>
+          </div>
+        </div>
+
         <HubCard 
           title={t.fitTitle} 
           description={t.fitDesc} 
