@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, ArrowLeft, Home, Download } from 'lucide-react';
 import { content, Language, Page } from './data/content';
 import { DoctorIcon, TestTubeIcon, MailboxDnaIcon, ColonIcon } from './components/Icons';
+import { PATIENT_PHONE, PATIENT_PHONE_URI } from './config';
 
 export default function App() {
   const [language, setLanguage] = useState<Language | null>(null);
@@ -149,9 +150,16 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
                   className="w-full h-auto rounded-2xl hover:opacity-95 transition-opacity"
                 />
               </a>
-              <p className="text-sm text-warm-muted my-3 px-2 italic text-center">
-                {t.tapToEnlarge}
+              <p className="text-sm text-warm-muted mt-3 mb-6 px-4 italic text-left">
+                {t.tapToEnlarge} {t.callToSchedule}{' '}
+                <a 
+                  href={PATIENT_PHONE_URI} 
+                  className="font-bold text-brand hover:text-brand-dark transition-colors not-italic"
+                >
+                  {PATIENT_PHONE}
+                </a>
               </p>
+
               <a 
                 href={t.brochurePath}
                 download={t.brochureFilename}
@@ -181,6 +189,16 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
             icon={<ColonIcon className="w-10 h-10 text-brand" />}
             onClick={() => onSelect('colonoscopy')}
           />
+
+          <div className="mt-8 mb-12 px-4 flex flex-col w-full">
+            <h3 className="text-xl font-bold text-warm-muted uppercase tracking-tight">{t.orderHelp}</h3>
+            <a 
+              href={PATIENT_PHONE_URI} 
+              className="text-3xl font-black text-brand self-end hover:text-brand-dark transition-colors mt-2"
+            >
+              {PATIENT_PHONE}
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -264,14 +282,34 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
           <div className="bg-warm-bg rounded-[2.5rem] p-8 mb-10 border border-black/5">
             <h2 className="text-3xl font-bold text-warm-text mb-8">{m.stepsTitle}</h2>
             <ul className="space-y-8">
-              {m.steps.map((step, index) => (
-                <li key={index} className="flex gap-5">
-                  <div className="flex-shrink-0 w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-bold text-lg mt-1">
-                    {index + 1}
-                  </div>
-                  <p className="text-xl text-warm-text leading-relaxed pt-1">{step}</p>
-                </li>
-              ))}
+              {m.steps.map((step, index) => {
+                const hasPhone = step.includes('[PHONE]');
+                const parts = hasPhone ? step.split('[PHONE]') : [step];
+
+                return (
+                  <li key={index} className="flex gap-5">
+                    <div className="flex-shrink-0 w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center font-bold text-lg mt-1">
+                      {index + 1}
+                    </div>
+                    <p className="text-xl text-warm-text leading-relaxed pt-1">
+                      {hasPhone ? (
+                        <>
+                          {parts[0]}
+                          <a 
+                            href={PATIENT_PHONE_URI} 
+                            className="text-brand font-bold underline decoration-2 underline-offset-4 hover:text-brand-dark transition-colors"
+                          >
+                            {PATIENT_PHONE}
+                          </a>
+                          {parts[1]}
+                        </>
+                      ) : (
+                        step
+                      )}
+                    </p>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
