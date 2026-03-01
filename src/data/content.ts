@@ -32,7 +32,9 @@ export const content = {
           "Mail the sample or drop it off at the lab.",
           "Your doctor will contact you with the results."
         ],
-        frequency: "Recommended once a year."
+        frequency: "Recommended once a year.",
+        downloadPath: "/fit-guide-en.pdf",
+        downloadFilename: "FIT-Kit-Guide-EN.pdf"
       },
       cologuard: {
         title: "Cologuard",
@@ -44,7 +46,9 @@ export const content = {
           "Pack the sample and use the prepaid label to ship it back via UPS.",
           "Your doctor will review the results with you."
         ],
-        frequency: "Recommended every 3 years."
+        frequency: "Recommended every 3 years.",
+        downloadPath: "/cologuard-guide-en.pdf",
+        downloadFilename: "Cologuard-Guide-EN.pdf"
       },
       colonoscopy: {
         title: "Colonoscopy",
@@ -56,7 +60,9 @@ export const content = {
           "You will be given medication to keep you comfortable and asleep.",
           "The doctor will examine your colon and remove any polyps."
         ],
-        frequency: "Recommended every 10 years for average-risk adults."
+        frequency: "Recommended every 10 years for average-risk adults.",
+        downloadPath: "/colonoscopy-guide-en.pdf",
+        downloadFilename: "Colonoscopy-Guide-EN.pdf"
       }
     }
   },
@@ -90,7 +96,9 @@ export const content = {
           "Envíe la muestra por correo o entréguela en el laboratorio.",
           "Su médico se comunicará con usted para darle los resultados."
         ],
-        frequency: "Recomendado una vez al año."
+        frequency: "Recomendado una vez al año.",
+        downloadPath: "/fit-guide-es.pdf",
+        downloadFilename: "Guia-Prueba-FIT-ES.pdf"
       },
       cologuard: {
         title: "Cologuard",
@@ -102,7 +110,9 @@ export const content = {
           "Empaque la muestra y use la etiqueta prepagada para enviarla de regreso por UPS.",
           "Su médico revisará los resultados con usted."
         ],
-        frequency: "Recomendado cada 3 años."
+        frequency: "Recomendado cada 3 años.",
+        downloadPath: "/cologuard-guide-es.pdf",
+        downloadFilename: "Guia-Cologuard-ES.pdf"
       },
       colonoscopy: {
         title: "Colonoscopia",
@@ -114,7 +124,9 @@ export const content = {
           "Se le dará medicamento para mantenerlo cómodo y dormido.",
           "El médico examinará su colon y extirpará cualquier pólipo."
         ],
-        frequency: "Recomendado cada 10 años para adultos de riesgo promedio."
+        frequency: "Recomendado cada 10 años para adultos de riesgo promedio.",
+        downloadPath: "/colonoscopy-guide-es.pdf",
+        downloadFilename: "Guia-Colonoscopia-ES.pdf"
       }
     }
   }

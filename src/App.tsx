@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, ArrowLeft, Home, Download } from 'lucide-react';
 import { content, Language, Page } from './data/content';
@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full bg-warm-bg flex justify-center">
-      <div className="w-full max-w-md bg-warm-bg shadow-2xl overflow-hidden flex flex-col relative min-h-[100dvh]">
+      <div className="w-full max-w-md bg-warm-bg shadow-2xl overflow-hidden flex flex-col relative h-[100dvh]">
         <AnimatePresence mode="wait" custom={direction}>
           {page === 'language' && (
             <LanguageSelection key="language" onSelect={handleLanguageSelect} />
@@ -104,6 +104,11 @@ function LanguageSelection({ onSelect }: { onSelect: (lang: Language) => void })
 
 function Hub({ language, onSelect, onHome, direction }: { language: Language, onSelect: (page: Page) => void, onHome: () => void, direction: number }) {
   const t = content[language];
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  React.useLayoutEffect(() => {
+    scrollRef.current?.scrollTo(0, 0);
+  }, []);
   
   return (
     <motion.div 
@@ -112,69 +117,71 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
       exit={{ opacity: 0, x: direction * -20 }}
       className="flex-1 flex flex-col bg-warm-bg h-full"
     >
-      <header className="p-8 pb-6 bg-white shadow-sm rounded-b-[2.5rem] z-10 relative">
-        <button 
-          onClick={onHome}
-          className="absolute top-8 right-8 p-3 text-warm-muted hover:text-brand transition-colors bg-warm-bg rounded-full"
-          aria-label={t.home}
-        >
-          <Home className="w-7 h-7" />
-        </button>
-        <div className="w-20 h-20 bg-brand/10 rounded-3xl flex items-center justify-center mb-6">
-          <DoctorIcon className="w-10 h-10 text-brand" />
-        </div>
-        <h1 className="text-4xl font-bold text-warm-text mb-3 leading-tight">{t.hubTitle}</h1>
-        <p className="text-xl text-warm-muted leading-relaxed">{t.hubSubtitle}</p>
-      </header>
-
-      <div className="flex-1 p-6 space-y-5 overflow-y-auto pb-12 pt-8">
-        <div className="mb-8">
-          <div className="rounded-[2rem] overflow-hidden shadow-md border border-black/5 bg-white p-4">
-            <a 
-              href={t.brochurePath} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="block cursor-zoom-in"
-              title={t.tapToEnlarge}
-            >
-              <img 
-                src={t.brochurePath} 
-                alt={t.downloadBrochure}
-                className="w-full h-auto rounded-2xl hover:opacity-95 transition-opacity"
-              />
-            </a>
-            <p className="text-sm text-warm-muted my-3 px-2 italic text-center">
-              {t.tapToEnlarge}
-            </p>
-            <a 
-              href={t.brochurePath}
-              download={t.brochureFilename}
-              className="w-full py-4 px-6 bg-brand/10 text-brand rounded-full text-xl font-bold hover:bg-brand/20 transition-colors flex items-center justify-center gap-3"
-            >
-              <Download className="w-6 h-6" />
-              <span>{t.downloadBrochure}</span>
-            </a>
+      <div ref={scrollRef} className="flex-1 overflow-y-auto pb-12">
+        <header className="p-8 pb-10 bg-white shadow-sm rounded-b-[2.5rem] z-10 relative mb-4">
+          <button 
+            onClick={onHome}
+            className="absolute top-8 right-8 p-3 text-warm-muted hover:text-brand transition-colors bg-warm-bg rounded-full"
+            aria-label={t.home}
+          >
+            <Home className="w-7 h-7" />
+          </button>
+          <div className="w-20 h-20 bg-brand/10 rounded-3xl flex items-center justify-center mb-6">
+            <DoctorIcon className="w-10 h-10 text-brand" />
           </div>
-        </div>
+          <h1 className="text-4xl font-bold text-warm-text mb-3 leading-tight">{t.hubTitle}</h1>
+          <p className="text-xl text-warm-muted leading-relaxed">{t.hubSubtitle}</p>
+        </header>
 
-        <HubCard 
-          title={t.fitTitle} 
-          description={t.fitDesc} 
-          icon={<TestTubeIcon className="w-10 h-10 text-brand" />}
-          onClick={() => onSelect('fit')}
-        />
-        <HubCard 
-          title={t.cologuardTitle} 
-          description={t.cologuardDesc} 
-          icon={<MailboxDnaIcon className="w-10 h-10 text-brand" />}
-          onClick={() => onSelect('cologuard')}
-        />
-        <HubCard 
-          title={t.colonoscopyTitle} 
-          description={t.colonoscopyDesc} 
-          icon={<ColonIcon className="w-10 h-10 text-brand" />}
-          onClick={() => onSelect('colonoscopy')}
-        />
+        <div className="p-6 space-y-5 pt-4">
+          <div className="mb-8">
+            <div className="rounded-[2rem] overflow-hidden shadow-md border border-black/5 bg-white p-4">
+              <a 
+                href={t.brochurePath} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block cursor-zoom-in"
+                title={t.tapToEnlarge}
+              >
+                <img 
+                  src={t.brochurePath} 
+                  alt={t.downloadBrochure}
+                  className="w-full h-auto rounded-2xl hover:opacity-95 transition-opacity"
+                />
+              </a>
+              <p className="text-sm text-warm-muted my-3 px-2 italic text-center">
+                {t.tapToEnlarge}
+              </p>
+              <a 
+                href={t.brochurePath}
+                download={t.brochureFilename}
+                className="w-full py-4 px-6 bg-brand/10 text-brand rounded-full text-xl font-bold hover:bg-brand/20 transition-colors flex items-center justify-center gap-3"
+              >
+                <Download className="w-6 h-6" />
+                <span>{t.downloadBrochure}</span>
+              </a>
+            </div>
+          </div>
+
+          <HubCard 
+            title={t.fitTitle} 
+            description={t.fitDesc} 
+            icon={<TestTubeIcon className="w-10 h-10 text-brand" />}
+            onClick={() => onSelect('fit')}
+          />
+          <HubCard 
+            title={t.cologuardTitle} 
+            description={t.cologuardDesc} 
+            icon={<MailboxDnaIcon className="w-10 h-10 text-brand" />}
+            onClick={() => onSelect('cologuard')}
+          />
+          <HubCard 
+            title={t.colonoscopyTitle} 
+            description={t.colonoscopyDesc} 
+            icon={<ColonIcon className="w-10 h-10 text-brand" />}
+            onClick={() => onSelect('colonoscopy')}
+          />
+        </div>
       </div>
     </motion.div>
   );
@@ -201,6 +208,11 @@ function HubCard({ title, description, icon, onClick }: { title: string, descrip
 function MethodPage({ language, method, onBack, onHome, direction }: { language: Language, method: 'fit' | 'cologuard' | 'colonoscopy', onBack: () => void, onHome: () => void, direction: number }) {
   const t = content[language];
   const m = t.methods[method];
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  React.useLayoutEffect(() => {
+    scrollRef.current?.scrollTo(0, 0);
+  }, []);
   
   const icons = {
     fit: <TestTubeIcon className="w-12 h-12 text-brand" />,
@@ -233,7 +245,7 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
         </button>
       </header>
 
-      <div className="flex-1 overflow-y-auto">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto">
         <div className="p-8 pb-16">
           <div className="w-24 h-24 bg-brand/10 rounded-[2rem] flex items-center justify-center mb-8">
             {icons[method]}
@@ -264,8 +276,8 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
           </div>
 
           <a 
-            href={t.brochurePath}
-            download={t.brochureFilename}
+            href={m.downloadPath}
+            download={m.downloadFilename}
             className="w-full py-6 px-8 bg-brand text-white rounded-full text-2xl font-bold shadow-lg hover:bg-brand-light active:bg-brand-dark transition-colors flex items-center justify-center gap-4"
           >
             <Download className="w-8 h-8" />
