@@ -162,7 +162,8 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
 
               <a 
                 href={t.brochurePath}
-                download={t.brochureFilename}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-4 px-6 bg-brand/10 text-brand rounded-full text-xl font-bold hover:bg-brand/20 transition-colors flex items-center justify-center gap-3"
               >
                 <Download className="w-6 h-6" />
@@ -315,11 +316,12 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
 
           <a 
             href={m.downloadPath}
-            download={m.downloadFilename}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full py-6 px-8 bg-brand text-white rounded-full text-2xl font-bold shadow-lg hover:bg-brand-light active:bg-brand-dark transition-colors flex items-center justify-center gap-4"
           >
             <Download className="w-8 h-8" />
-            <span>{t.downloadBrochure}</span>
+            <span>{t.detailedInstructions}</span>
           </a>
         </div>
       </div>

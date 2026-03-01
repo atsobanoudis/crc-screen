@@ -18,6 +18,7 @@ export const content = {
     back: "Back",
     home: "Start Over",
     downloadBrochure: "Download Brochure",
+    detailedInstructions: "Detailed Instructions",
     tapToEnlarge: "Tap brochure to enlarge.",
     callToSchedule: "To schedule or order, call:",
     orderHelp: "Need help? Call us at:",
@@ -35,8 +36,8 @@ export const content = {
           "Your doctor will contact you with the results."
         ],
         frequency: "Recommended once a year.",
-        downloadPath: "/fit-guide-en.pdf",
-        downloadFilename: "FIT-Kit-Guide-EN.pdf"
+        downloadPath: "/fit-en.png",
+        downloadFilename: "FIT-Kit-Guide-EN.png"
       },
       cologuard: {
         title: "Cologuard",
@@ -49,8 +50,8 @@ export const content = {
           "Your doctor will review the results with you."
         ],
         frequency: "Recommended every 3 years.",
-        downloadPath: "/cologuard-guide-en.pdf",
-        downloadFilename: "Cologuard-Guide-EN.pdf"
+        downloadPath: "/cologuard-instructions-en.jpg",
+        downloadFilename: "Cologuard-Instructions-EN.jpg"
       },
       colonoscopy: {
         title: "Colonoscopy",
@@ -63,8 +64,8 @@ export const content = {
           "The doctor will examine your colon and remove any polyps."
         ],
         frequency: "Recommended every 10 years for average-risk adults.",
-        downloadPath: "/colonoscopy-guide-en.pdf",
-        downloadFilename: "Colonoscopy-Guide-EN.pdf"
+        downloadPath: "/colonoscopy-en.png",
+        downloadFilename: "Colonoscopy-Instructions-EN.png"
       }
     }
   },
@@ -84,6 +85,7 @@ export const content = {
     back: "Atrás",
     home: "Volver al inicio",
     downloadBrochure: "Descargar Folleto",
+    detailedInstructions: "Instrucciones Detalladas",
     tapToEnlarge: "Toque el folleto para ampliar.",
     callToSchedule: "Para programar o pedir, llame al:",
     orderHelp: "¿Necesita ayuda? Llámenos al:",
@@ -101,8 +103,8 @@ export const content = {
           "Su médico se comunicará con usted para darle los resultados."
         ],
         frequency: "Recomendado una vez al año.",
-        downloadPath: "/fit-guide-es.pdf",
-        downloadFilename: "Guia-Prueba-FIT-ES.pdf"
+        downloadPath: "/fit-es.jpg",
+        downloadFilename: "Guia-Prueba-FIT-ES.jpg"
       },
       cologuard: {
         title: "Cologuard",
@@ -115,8 +117,8 @@ export const content = {
           "Su médico revisará los resultados con usted."
         ],
         frequency: "Recomendado cada 3 años.",
-        downloadPath: "/cologuard-guide-es.pdf",
-        downloadFilename: "Guia-Cologuard-ES.pdf"
+        downloadPath: "/cologuard-instructions-es.jpg",
+        downloadFilename: "Instrucciones-Cologuard-ES.jpg"
       },
       colonoscopy: {
         title: "Colonoscopia",
@@ -129,8 +131,8 @@ export const content = {
           "El médico examinará su colon y extirpará cualquier pólipo."
         ],
         frequency: "Recomendado cada 10 años para adultos de riesgo promedio.",
-        downloadPath: "/colonoscopy-guide-es.pdf",
-        downloadFilename: "Guia-Colonoscopia-ES.pdf"
+        downloadPath: "/colonoscopy-es.png",
+        downloadFilename: "Instrucciones-Colonoscopia-ES.png"
       }
     }
   }
