@@ -18,6 +18,7 @@ export const content = {
     back: "Back",
     home: "Start Over",
     downloadBrochure: "Download Brochure",
+    tapToEnlarge: "Tap image to enlarge. Use button below to download.",
     brochurePath: "/brochure-en.jpg",
     brochureFilename: "CRC-Screening-Brochure-EN.jpg",
     methods: {
@@ -75,6 +76,7 @@ export const content = {
     back: "Atrás",
     home: "Volver al inicio",
     downloadBrochure: "Descargar Folleto",
+    tapToEnlarge: "Toque la imagen para ampliar. Use el botón de abajo para descargar.",
     brochurePath: "/brochure-es.jpg",
     brochureFilename: "Folleto-Deteccion-CRC-ES.jpg",
     methods: {

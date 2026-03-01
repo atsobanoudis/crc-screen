@@ -130,11 +130,22 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
       <div className="flex-1 p-6 space-y-5 overflow-y-auto pb-12 pt-8">
         <div className="mb-8">
           <div className="rounded-[2rem] overflow-hidden shadow-md border border-black/5 bg-white p-4">
-            <img 
-              src={t.brochurePath} 
-              alt={t.downloadBrochure}
-              className="w-full h-auto rounded-2xl mb-4"
-            />
+            <a 
+              href={t.brochurePath} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block cursor-zoom-in"
+              title={t.tapToEnlarge}
+            >
+              <img 
+                src={t.brochurePath} 
+                alt={t.downloadBrochure}
+                className="w-full h-auto rounded-2xl hover:opacity-95 transition-opacity"
+              />
+            </a>
+            <p className="text-sm text-warm-muted my-3 px-2 italic text-center">
+              {t.tapToEnlarge}
+            </p>
             <a 
               href={t.brochurePath}
               download={t.brochureFilename}
@@ -252,10 +263,14 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
             </ul>
           </div>
 
-          <button className="w-full py-6 px-8 bg-brand text-white rounded-full text-2xl font-bold shadow-lg hover:bg-brand-light active:bg-brand-dark transition-colors flex items-center justify-center gap-4">
+          <a 
+            href={t.brochurePath}
+            download={t.brochureFilename}
+            className="w-full py-6 px-8 bg-brand text-white rounded-full text-2xl font-bold shadow-lg hover:bg-brand-light active:bg-brand-dark transition-colors flex items-center justify-center gap-4"
+          >
             <Download className="w-8 h-8" />
             <span>{t.downloadBrochure}</span>
-          </button>
+          </a>
         </div>
       </div>
     </motion.div>
