@@ -44,8 +44,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-warm-bg flex justify-center">
-      <div className="w-full max-w-md bg-warm-bg shadow-2xl overflow-hidden flex flex-col relative h-[100dvh]">
+    <div className="min-h-svh w-full bg-warm-bg flex justify-center overflow-hidden fixed inset-0">
+      <div className="w-full max-w-md bg-warm-bg shadow-2xl overflow-hidden flex flex-col relative h-svh">
         <AnimatePresence mode="wait" custom={direction}>
           {page === 'language' && (
             <LanguageSelection key="language" onSelect={handleLanguageSelect} />

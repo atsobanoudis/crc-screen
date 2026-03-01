@@ -16,4 +16,7 @@ body {
   background-color: var(--color-warm-bg);
   color: var(--color-warm-text);
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+  touch-action: manipulation;
+  overflow: hidden;
 }
