@@ -22,6 +22,9 @@ export const content = {
     tapToEnlarge: "Tap brochure to enlarge.",
     callToSchedule: "To schedule or order, call:",
     orderHelp: "Need help? Call us at:",
+    afterHoursHelp: "After hours? Please call:",
+    twentyFourSeven: "24/7",
+    officeHours: "M–F: 8AM–5PM",
     brochurePath: "/brochure-en.jpg",
     brochureFilename: "CRC-Screening-Brochure-EN.jpg",
     methods: {
@@ -89,6 +92,9 @@ export const content = {
     tapToEnlarge: "Toque el folleto para ampliar.",
     callToSchedule: "Para programar o pedir, llame al:",
     orderHelp: "¿Necesita ayuda? Llámenos al:",
+    afterHoursHelp: "¿Fuera del horario? Por favor llame al:",
+    twentyFourSeven: "24/7",
+    officeHours: "L–V: 8AM–5PM",
     brochurePath: "/brochure-es.jpg",
     brochureFilename: "Folleto-Deteccion-CRC-ES.jpg",
     methods: {

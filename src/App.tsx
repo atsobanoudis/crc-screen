@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, ArrowLeft, Home, Download } from 'lucide-react';
 import { content, Language, Page } from './data/content';
 import { DoctorIcon, TestTubeIcon, MailboxDnaIcon, ColonIcon } from './components/Icons';
+import { PhoneAvailability } from './components/PhoneAvailability';
 import { PATIENT_PHONE, PATIENT_PHONE_URI } from './config';
 
 const resolveAsset = (path: string) => {
@@ -91,7 +92,7 @@ function LanguageSelection({ onSelect }: { onSelect: (lang: Language) => void })
         Please select your preferred language to continue.<br/>
         <span className="text-lg mt-2 block">Por favor, seleccione su idioma preferido para continuar.</span>
       </p>
-      
+
       <div className="w-full space-y-5">
         <button 
           onClick={() => onSelect('en')}
@@ -121,7 +122,7 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
   React.useLayoutEffect(() => {
     scrollRef.current?.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <motion.div 
       initial={{ opacity: 0, x: direction * 20 }}
@@ -202,14 +203,8 @@ function Hub({ language, onSelect, onHome, direction }: { language: Language, on
             onClick={() => onSelect('colonoscopy')}
           />
 
-          <div className="mt-8 mb-12 px-4 flex flex-col w-full">
-            <h3 className="text-xl font-bold text-warm-muted uppercase tracking-tight">{t.orderHelp}</h3>
-            <a 
-              href={PATIENT_PHONE_URI} 
-              className="text-3xl font-black text-brand self-end hover:text-brand-dark transition-colors mt-2"
-            >
-              {PATIENT_PHONE}
-            </a>
+          <div className="px-4">
+            <PhoneAvailability t={t} />
           </div>
         </div>
       </div>
@@ -243,7 +238,7 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
   React.useLayoutEffect(() => {
     scrollRef.current?.scrollTo(0, 0);
   }, []);
-  
+
   const icons = {
     fit: <TestTubeIcon className="w-12 h-12 text-brand" />,
     cologuard: <MailboxDnaIcon className="w-12 h-12 text-brand" />,
@@ -280,13 +275,13 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
           <div className="w-24 h-24 bg-brand/10 rounded-[2rem] flex items-center justify-center mb-8">
             {icons[method]}
           </div>
-          
+
           <h1 className="text-4xl font-bold text-warm-text mb-5 leading-tight">{m.title}</h1>
-          
+
           <div className="inline-block bg-brand/10 text-brand font-bold px-5 py-3 rounded-full text-lg mb-8">
             {m.frequency}
           </div>
-          
+
           <p className="text-2xl text-warm-muted mb-12 leading-relaxed">
             {m.intro}
           </p>
@@ -334,6 +329,8 @@ function MethodPage({ language, method, onBack, onHome, direction }: { language:
             <Download className="w-8 h-8" />
             <span>{t.detailedInstructions}</span>
           </a>
+
+          <PhoneAvailability t={t} />
         </div>
       </div>
     </motion.div>
